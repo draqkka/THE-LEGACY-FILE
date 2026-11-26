@@ -21,7 +21,7 @@ window.LF = {
      - video: (opcional) vídeo do professor, exibido ao concluir o interrogatório dele. Vazio = não aparece nada.
      ATENÇÃO: a 1ª letra de cada pergunta forma R-E-B-E-C-A. Ao editar um texto, mantenha a letra inicial. */
   professores: [
-    { nome: "Professora Cássia", area: "Pacote Office", foto: "assets/fotos/cassia.jpg",
+    { nome: "Professora Cássia", foto: "assets/fotos/cassia.jpg",
       palavra: "Força", marcante: "Sorriso", mania: "Mais na dela", jeito: "Rígida e, ao mesmo tempo, atenta a ajudar",
       momento: "Quando você passava mais de 45 perguntas de revisão",
       registrado: "Nossos pequenos reencontros e, quando mais precisava, nem que fosse para te observar de longe",
@@ -57,7 +57,7 @@ window.LF = {
           dicas: ["É muito utilizado na comunicação profissional.", "Permite organizar e-mails e compromissos.", "Seu nome começa com O."] }
       ] },
 
-    { nome: "Professor Julio", area: "Hardware", foto: "assets/fotos/julio.jpg",
+    { nome: "Professor Julio", foto: "assets/fotos/julio.jpg",
       palavra: "Humorado", marcante: "Risada", mania: "Fazer perguntas apontando com a escova", jeito: "Descontraído e, ao mesmo tempo, sério",
       momento: "Quando você contava os casos de família para a gente",
       registrado: "A gente jogando videogame",
@@ -93,7 +93,7 @@ window.LF = {
           dicas: ["É executado durante a inicialização.", "Realiza verificações básicas dos componentes.", "Sua sigla possui quatro letras e começa com B."] }
       ] },
 
-    { nome: "Professora Vanessa", area: "Cibersegurança", foto: "assets/fotos/vanessa.jpg",
+    { nome: "Professora Vanessa", foto: "assets/fotos/vanessa.jpg",
       palavra: "Jovial", marcante: "Explicação leve e descontraída", mania: "Fala algumas gírias", jeito: "Descontraída e, ao mesmo tempo, séria",
       momento: "O dia em que você deu todas as aulas para a gente",
       registrado: "Quando estava com vergonha de pegar comida na palestra e você me ajudando a ficar mais tranquila e familiarizada",
@@ -129,7 +129,7 @@ window.LF = {
           dicas: ["Ajuda a proteger o sistema contra malwares.", "Pode realizar verificações em arquivos e dispositivos.", "Seu nome começa com A e termina com vírus."] }
       ] },
 
-    { nome: "Professor José", area: "TOTVS e Gestão Empresarial", foto: "assets/fotos/jose.jpg",
+    { nome: "Professor José", foto: "assets/fotos/jose.jpg",
       palavra: "Objetivo", marcante: "Explicação leve e descontraída", mania: "Explicar até que todos entendam", jeito: "Descontraído e, ao mesmo tempo, sério",
       momento: "Piadinhas leves que melhoram os dias dos alunos",
       registrado: "Quando você finalmente gravou meu nome, uma raridade, né? rsrs",
