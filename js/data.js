@@ -27,7 +27,7 @@ window.LF = {
       registrado: "Nossos pequenos reencontros e, quando mais precisava, nem que fosse para te observar de longe",
       ensinamento: "Disciplina e confiança",
       deixado: "A beleza de ver o outro como queremos que tudo mude para melhor",
-      pista: "Anotação do caso: toda pergunta esconde um segredo na primeira letra. Junte todas e o código da surpresa final se revela. Erre à vontade: são 3 dicas por pergunta. E atenção, haverá uma sobre a sua área, porque o informante também gosta de testar o detetive.",
+      pista: "Anotação do caso: toda pergunta esconde um segredo na primeira letra. Junte todas e o código da surpresa final se revela. Erre à vontade: são 3 dicas por pergunta. E atenção, haverá uma sobre a sua área, porque o informante também gosta de testar a detetive.",
       // ▶ VÍDEO DA PROFESSORA CÁSSIA (ainda será gravado): coloque o arquivo em assets/ e escreva o caminho aqui. Ex.: "assets/video-cassia.mp4"
       video: "",
       perguntas: [
@@ -99,7 +99,7 @@ window.LF = {
       registrado: "Quando estava com vergonha de pegar comida na palestra e você me ajudando a ficar mais tranquila e familiarizada",
       ensinamento: "Avançar meus conhecimentos em assuntos já estudados por mim em outros cursos",
       deixado: "Ser você mesmo e não ter medo de demonstrar seus verdadeiros gostos",
-      pista: "Anotação do caso: toda pergunta esconde um segredo na primeira letra. Junte todas e o código da surpresa final se revela. Erre à vontade: são 3 dicas por pergunta. E atenção, haverá uma sobre a sua área, porque o informante também gosta de testar o detetive.",
+      pista: "Anotação do caso: toda pergunta esconde um segredo na primeira letra. Junte todas e o código da surpresa final se revela. Erre à vontade: são 3 dicas por pergunta. E atenção, haverá uma sobre a sua área, porque o informante também gosta de testar a detetive.",
       // ▶ VÍDEO DA PROFESSORA VANESSA (ainda será gravado): coloque o arquivo em assets/ e escreva o caminho aqui. Ex.: "assets/video-vanessa.mp4"
       video: "",
       perguntas: [
