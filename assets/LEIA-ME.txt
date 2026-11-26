@@ -1,0 +1,1 @@
+Coloque aqui as fotos, a evidência e o vídeo, e escreva os caminhos em js/data.js (ex.: assets/cassia.jpg).
