@@ -79,7 +79,7 @@ const I={
   if(hit(v,q.respostas)){busy=true;reg('resposta',{q:S.q,r:v,ok:1});ded(`${S.q+1}. ${q.texto} → ${q.respostas[0]}`);S.q++;save();if(S.q>=Q.length)reg('concluiu');$('#m').textContent='Correto.';setTimeout(show,900)}
   else{reg('resposta',{q:S.q,r:v,ok:0});$('#m').textContent='Ainda não. Observe novamente as pistas.';$('#r').classList.add('shake');setTimeout(()=>$('#r').classList.remove('shake'),400)}};
  $('#dica').onclick=()=>{const q=Q[S.q];if(!q)return;if(h<q.dicas.length){reg('dica',{q:S.q,n:h+1});$('#dc').insertAdjacentHTML('beforeend',`<li>${q.dicas[h]}</li>`);h++;if(h>=q.dicas.length){$('#dica').disabled=true;$('#dica').textContent='Sem mais dicas'}else $('#dica').textContent=`Pedir dica (${h+1}/${q.dicas.length})`}};
- $('#ok').onclick=ok;$('#r').onkeydown=e=>e.key=='Enter'&&ok();show()},
+ $('#ok').onclick=ok;$('#r').onkeydown=e=>{if(e.key=='Enter')ok()};show()},
 6:()=>{const bd=$('#bd'),sv=$('#sv');const lines=()=>{if(!$('#bd'))return;sv.innerHTML='';const b=bd.getBoundingClientRect(),c=$('.center',bd).getBoundingClientRect();S.seen.forEach(i=>{const r=$$('.card',bd)[i].getBoundingClientRect();sv.insertAdjacentHTML('beforeend',`<line x1="${r.left+r.width/2-b.left}" y1="${r.top+r.height/2-b.top}" x2="${c.left+c.width/2-b.left}" y2="${c.top+c.height/2-b.top}"/>`)})};
  const fin=()=>{lines();if(S.seen.includes(S.prof)){ded('Ficha de investigador aberta: '+L.professores[S.prof].nome);$('#nx').hidden=false;$('#m').textContent='A ficha aponta para alguém que não está neste quadro.'}};
  $$('button.card',bd).forEach(c=>c.onclick=()=>{const i=+c.dataset.i,p=L.professores[i];modal(ficha(i));$('#cl').onclick=()=>{closeM();if(!S.seen.includes(i)){S.seen.push(i);save();c.classList.add('seen')}fin()}});
@@ -103,7 +103,7 @@ const I={
   if(k=='n'){m.textContent='Você percebeu. A identidade será revelada após a última dedução.';ded('Os quatro professores foram descartados como suspeitos');$$('[data-s]',sp).forEach(x=>x.disabled=true);m.textContent='Você percebeu. Falta o código secreto.';$('#cd').hidden=false;$('#cod').focus();return}
   wrong++;b.disabled=true;b.classList.add('dim');m.textContent=L.professores[+k].nome+' deixou registros nesta investigação, mas não foi quem os guardou. Releia as pistas.'+(wrong>=2?' Nem todo mundo que guarda uma história aparece nela.':'')});
  const cod=()=>{if(norm($('#cod').value)==norm(L.codigo)){m.textContent='Código aceito. O informante está prestes a falar.';ded('Código secreto decifrado');$('#cd').hidden=true;$('#nx8').hidden=false}else{m.textContent='Ainda não. Compare a primeira letra de cada pergunta no caderno.';$('#cod').classList.add('shake');setTimeout(()=>$('#cod').classList.remove('shake'),400)}};
- $('#cok').onclick=cod;$('#cod').onkeydown=e=>e.key=='Enter'&&cod();$('#cad').onclick=()=>modal(caderno());
+ $('#cok').onclick=cod;$('#cod').onkeydown=e=>{if(e.key=='Enter')cod()};$('#cad').onclick=()=>modal(caderno());
  $('#nx8').onclick=()=>{$('#stage').classList.add('zoom');setTimeout(()=>go(9),900)}},
 9:()=>{const v=$('#v'),b=$('#go');if(!v){b.onclick=()=>go(10);return}b.onclick=()=>{v.play();b.hidden=true};v.onplay=()=>b.hidden=true;v.onended=()=>go(10);v.onerror=()=>{$('.rec').textContent='● vídeo indisponível';b.hidden=true};$('#sk').onclick=()=>go(10)},
 10:()=>{$$('[data-p]').forEach(b=>b.onclick=()=>{const a=AL[+b.dataset.p];modal(`<div class="paper" style="max-width:380px"><div class="photo big" style="border-width:8px 8px 22px">${ph(a.foto,a.t)}</div><p>${a.t}</p>${CL}</div>`)});
