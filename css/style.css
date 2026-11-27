@@ -102,3 +102,12 @@ input{font:16px var(--ed);padding:12px;background:#0007;border:1px solid #c0a16a
 .pk .ch{margin-left:auto;font-size:1.6rem;color:var(--b)}
 .pk.lock{background:#2a2622cc;color:#8d8576;cursor:not-allowed;box-shadow:none}.pk.lock:hover{transform:none}.pk.lock .av{background:#3a352f;font-size:1rem}
 .card.lock{cursor:not-allowed;opacity:.55;filter:grayscale(1);pointer-events:none}
+
+/* escolha de perfil na capa */
+.pkbox{width:100%;display:flex;flex-direction:column;align-items:center}
+.pklbl{letter-spacing:.22em;text-transform:uppercase;font-size:.72rem;opacity:.85;margin:20px 0 10px}
+.s1 .pks{gap:8px;max-width:330px}.s1 .pk{padding:8px 14px;font-size:1.1rem}.s1 .pk .av{width:34px;height:34px;font-size:1.05rem}
+
+/* sombra do detetive (foto dos perfis) */
+.sombra{object-fit:cover;object-position:50% 20%;background:#1a1613}
+.pk .av{overflow:hidden}.pk .av img{width:100%;height:100%;object-fit:cover;object-position:50% 20%}
