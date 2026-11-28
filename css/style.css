@@ -199,3 +199,8 @@ input:focus{outline:0;border-color:#e8c36a;box-shadow:0 0 0 3px #e8c36a33,0 0 22
 64%{box-shadow:0 0 64px 18px #000000dd,0 0 140px 56px #762b3c99,0 18px 40px #000b,inset 0 0 40px #8a6a3a55}
 82%{box-shadow:0 0 44px 10px #000000bb,0 0 100px 30px #762b3c55,0 18px 40px #000b,inset 0 0 40px #8a6a3a55}}
 @media(prefers-reduced-motion:reduce){.mis{animation:none;box-shadow:0 0 60px 14px #000c,0 0 110px 36px #762b3c55,0 18px 40px #000b,inset 0 0 40px #8a6a3a55}}
+
+/* ===== Depoimento e Gerar carta na mesa do professor (tela 2) ===== */
+.objs.fim{grid-template-columns:repeat(2,1fr);max-width:320px}
+.obj .ico{font-size:2rem;height:58px;display:grid;place-items:center;filter:drop-shadow(0 4px 6px #000)}
+.obj.lock{opacity:.55}.obj.lock:hover{transform:none;box-shadow:none}
