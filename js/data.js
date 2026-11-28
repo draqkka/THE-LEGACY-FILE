@@ -185,5 +185,54 @@ window.LF = {
           "Mas algumas deixam evidências em lugares que nenhum arquivo consegue guardar.",
           "No jeito que a gente aprende,", "no jeito que a gente continua.",
           "Esta investigação termina aqui.", "A importância que você teve, não."],
-  assinaturaFinal: "— Rebeca ♡"
+  assinaturaFinal: "— Rebeca ♡",
+  // ▶ MISSÕES: o texto que aparece (com efeito de digitação) quando o professor chega em cada etapa. A chave é o número da etapa (2 a 11).
+  missoes: {
+    2: {titulo: "A mesa do investigador", texto: "Esta é a sua mesa de trabalho. Cada objeto guarda uma pista do caso. Para começar, abra a correspondência: é ela que dá início à investigação."},
+    3: {titulo: "A primeira correspondência", texto: "Leia a carta com atenção. Ela esconde uma palavra-chave importante. Quando terminar de ler, toque em Registrar Dedução para avançar."},
+    4: {titulo: "A evidência", texto: "Arraste o dedo (ou o mouse) sobre a foto para raspar e revelar um número especial. Se preferir, use o botão Revelar sem raspar."},
+    5: {titulo: "O interrogatório", texto: "Responda uma pergunta de cada vez. Se travar, peça uma dica: são 3 por pergunta. E fique atento: toda pergunta esconde um segredo na primeira letra."},
+    6: {titulo: "O quadro de investigação", texto: "Toque na sua fotografia para abrir a sua ficha de investigador. Leia tudo com calma e depois feche a ficha para seguir a pista."},
+    7: {titulo: "A frase misteriosa", texto: "Reorganize as palavras, arrastando ou tocando nelas, até formar a frase correta. Se precisar, use o botão Dica."},
+    8: {titulo: "O informante", texto: "O responsável foi identificado. Agora você precisa descobrir quem é o informante. Para isso, será preciso um código secreto formado pelas iniciais das perguntas. O Caderno de Dedução pode ajudar."},
+    9: {titulo: "O depoimento", texto: "Chegou a hora do depoimento. Ele foi gravado especialmente para você. Aperte o play e assista até o final."},
+    10: {titulo: "Caso encerrado", texto: "Investigação concluída! Aqui ficam todas as memórias guardadas. Toque nas fotos para ampliar e use os botões abaixo para rever palavras, caderno, vídeo e a carta."},
+    11: {titulo: "A carta", texto: "A carta está vazia. Toque em Gerar carta e uma mensagem nova aparece, e cada clique traz uma diferente. Use quantas vezes quiser."}
+  },
+  // ▶ CARTAS DA TELA FINAL: cada clique em "Gerar carta" monta uma mensagem nova = 1 abertura + 1 trecho do meio + 1 fecho (nunca repete a mesma combinação).
+  //   Para ter ainda mais cartas diferentes, é só acrescentar frases em qualquer uma das três listas.
+  cartas: {
+    aberturas: [
+      "Se eu pudesse guardar uma lembrança num arquivo, seria a de ter passado pela sua sala.",
+      "Passou o tempo, mas algumas aulas continuam tocando dentro da gente.",
+      "Quando penso em quem me ajudou a chegar até aqui, o seu nome aparece sem esforço.",
+      "Nem tudo o que você ensinou cabia no caderno, e foi justamente isso que ficou.",
+      "Talvez você nunca saiba o tamanho do que deixou por onde passou, então deixo registrado aqui.",
+      "Esta investigação tinha só um objetivo: provar que você deixou marcas.",
+      "Existem pessoas que a gente encontra no caminho e a vida muda de direção.",
+      "Eu precisava dizer isso em algum lugar, e este arquivo me pareceu o lugar certo."
+    ],
+    meios: [
+      "Você ensinou conteúdo, mas também ensinou a não desistir quando o caminho ficava difícil.",
+      "Cada explicação sua transformou o que parecia impossível em algo que eu consegui fazer.",
+      "Teve paciência nos dias em que eu mesma não tinha, e isso fez toda a diferença.",
+      "Você enxergou potencial onde eu só via dúvida, e acreditar em mim primeiro me ensinou a acreditar também.",
+      "As suas aulas viraram lembranças que eu carrego até fora da escola.",
+      "O jeito como você trata as pessoas me ensinou mais do que qualquer matéria.",
+      "Cada conselho, cada puxão de orelha e cada risada ficaram guardados com carinho.",
+      "Foi com você que aprendi que errar faz parte e que recomeçar também é aprender.",
+      "Você transformou uma sala de aula em um lugar onde dava vontade de voltar.",
+      "Sem fazer barulho, você abriu portas que eu nem sabia que existiam."
+    ],
+    fechos: [
+      "Obrigada por tudo o que você plantou. Eu levo comigo.",
+      "O caso está encerrado, mas a gratidão continua aberta.",
+      "A importância que você teve não cabe em nenhum registro oficial.",
+      "Que você saiba, sempre: o que você ensinou continua vivo em mim.",
+      "Foi uma honra ter sido sua aluna. Continuo aprendendo com você.",
+      "Memórias preservadas. Gratidão eterna.",
+      "Se um dia o mundo perguntar quem me inspirou, eu já sei a resposta.",
+      "Esta carta termina aqui. O que você deixou em mim, não."
+    ]
+  }
 };
