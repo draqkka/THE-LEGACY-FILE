@@ -7,8 +7,9 @@ const ded=t=>{if(!S.ded.includes(t)){S.ded.push(t);save()}};
 window.fbk=e=>{e.onerror=null;const sh=e.dataset.s;if(sh){e.src=sh;e.classList.add('sombra');e.onerror=()=>{e.outerHTML='<div class=ph></div>'}}else e.outerHTML='<div class=ph></div>'};
 const ph=(f,a='',s=L.sombra)=>f?`<img src="${f}" alt="${a}" data-s="${s||''}" onerror="fbk(this)">`:s?`<img class="sombra" src="${s}" alt="" onerror="this.outerHTML='<div class=ph></div>'">`:'<div class="ph"></div>';
 let lastF=null;
-const modal=h=>{const m=$('#modal');lastF=document.activeElement;m.innerHTML=h;m.hidden=false;m.onclick=e=>{if(e.target===m)closeM()};const f=$('button',m);if(f)f.focus()};
-const closeM=()=>{$('#modal').hidden=true;if(lastF&&lastF.isConnected)lastF.focus()};
+const modal=h=>{const m=$('#modal');lastF=document.activeElement;onClose=null;m.innerHTML=h;m.hidden=false;m.onclick=e=>{if(e.target===m)closeM()};const f=$('button',m);if(f)f.focus()};
+let onClose=null;
+const closeM=()=>{$('#modal').hidden=true;if(onClose){const f=onClose;onClose=null;f()}if(lastF&&lastF.isConnected)lastF.focus()};
 const CL='<button class="btn" onclick="closeM()">← Voltar</button>';
 const norm=s=>s.trim().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
 /*HELPERS-RESPOSTA*/
@@ -17,9 +18,26 @@ const ed=(a,b)=>{const d=[];for(let i=0;i<=a.length;i++){d[i]=[i];for(let j=1;j<
 const tol=w=>w.includes(' ')?(w.length>=12?1:0):(w.length>=10?2:w.length>=5?1:0);  // erros leves só em palavras longas (evita aceitar "Ctrl V" no lugar de "Ctrl C")
 const hit=(v,R)=>{const x=cl(v);return !!x&&R.some(r=>{const w=cl(r);return x==w||ed(x,w)<=tol(w)})};
 /*FIM-HELPERS*/
-function go(n){const f=$('#fade');f.classList.add('on');setTimeout(()=>{S.step=n;S.max=Math.max(S.max,n);if(n!=9&&n!=11)S.bk=false;save();reg('etapa',{etapa:n});$('#stage').className='';show();f.classList.remove('on')},750)}
+function go(n){const f=$('#fade');f.classList.add('on');setTimeout(()=>{const fwd=n==S.step+1;S.step=n;S.max=Math.max(S.max,n);if(n!=9&&n!=11)S.bk=false;save();reg('etapa',{etapa:n});$('#stage').className='';show();f.classList.remove('on');intro(n,fwd)},750)}
+// ---- Missões: ao chegar numa etapa, abre a instrução com efeito de digitação e um X para fechar. O botão "?" do topo reabre.
+let TT=null;const stopT=()=>{clearInterval(TT);TT=null};
+const blinkDot=k=>{const d=$(`#hud .dots button[data-n="${k}"]`);if(!d)return;d.classList.remove('blink');void d.offsetWidth;d.classList.add('blink');setTimeout(()=>d.classList.remove('blink'),3200)};
+function digita(el,txt,fim){stopT();el.textContent=txt;el.style.minHeight=el.offsetHeight+'px';
+ if(matchMedia('(prefers-reduced-motion:reduce)').matches){fim();return()=>{}}
+ el.innerHTML='<span class="ty"></span><i class="cur"></i>';const t=$('.ty',el);let i=0;
+ const end=()=>{stopT();el.textContent=txt;fim()};
+ TT=setInterval(()=>{if($('#modal').hidden||!el.isConnected){stopT();return}i+=1;t.textContent=txt.slice(0,i);if(i>=txt.length)end()},26);
+ return()=>{if(TT)end()}}
+function missao(n,done){const M=(L.missoes||{})[n];if(!M)return;
+ modal(`<div class="paper mis"><button class="x" id="mx" aria-label="Fechar">✕</button>${done?`<p class="ok-et">✓ Etapa ${done} concluída</p>`:''}<small>Etapa ${n} de 11</small><h2>${M.titulo}</h2><p id="mt"></p><p class="dica-x" id="mh" hidden>Quando terminar de ler, toque no X para fechar.</p></div>`);
+ const skip=digita($('#mt'),M.texto,()=>{$('#mh').hidden=false;$('#mx').classList.add('rdy')});
+ $('.mis').onclick=e=>{if(!e.target.closest('#mx'))skip()};
+ $('#mx').onclick=closeM;onClose=()=>{stopT();if(done)blinkDot(done)}}
+function intro(n,fwd){const seen=S.mi||[];if(n<2||!(L.missoes||{})[n]||seen.includes(n)){if(fwd)blinkDot(n-1);return}
+ S.mi=[...seen,n];save();missao(n,fwd?n-1:null)}
 function hud(){const h=$('#hud'),n=S.step;h.hidden=n==1||n==11;if(h.hidden)return;
- h.innerHTML=`<span><b class="lb" style="font-weight:400">INVESTIGAÇÃO </b>Nº 018</span><span class="dots">${Array.from({length:11},(_,i)=>`<button class="${i<S.max?'on':''} ${i+1==n?'now':''}" data-n="${i+1}" aria-label="Etapa ${i+1}" ${i<S.max?'':'disabled'}></button>`).join('')}</span><span>DIA 0${Math.min(1+Math.floor((n-1)/3),4)}</span>`;
+ h.innerHTML=`<span><b class="lb" style="font-weight:400">INVESTIGAÇÃO </b>Nº 018</span><span class="dots">${Array.from({length:11},(_,i)=>`<button class="${i<S.max?'on':''} ${i+1==n?'now':''}" data-n="${i+1}" aria-label="Etapa ${i+1}" title="Etapa ${i+1}" ${i<S.max?'':'disabled'}>${i+1}</button>`).join('')}</span><span><b class="dt" style="font-weight:400">DIA 0${Math.min(1+Math.floor((n-1)/3),4)}</b><button class="mi" id="mi" aria-label="Ver instruções da missão" title="Ver instruções da missão">?</button></span>`;
+ $('#mi',h).onclick=()=>missao(n,null);
  $$('.dots button.on',h).forEach(d=>d.onclick=()=>go(+d.dataset.n))}
 const FD=[['palavra','Palavra-chave'],['marcante','Característica marcante'],['mania','Mania'],['jeito','Método de ensino'],['momento','Momento marcante'],['registrado','Momento registrado'],['ensinamento','Ensinamento'],['deixado','Ensinamento deixado'],['pista','Pista do caso']];
 const ficha=i=>{const p=L.professores[i],f=p.nome.startsWith('Professora')?'Professora':'Professor',rev=S.max>=10;
@@ -67,7 +85,7 @@ const T={
 // ▶ VÍDEO DO DEPOIMENTO FINAL (informante): cada professor tem o seu, no campo "depoimento" dentro do professor em data.js. Se faltar, usa o campo "video" geral no fim do arquivo. Vazio = a TV mostra "O depoimento será exibido aqui."
 9:()=>`<div class="tv"><img class="tvf" src="assets/tv-retro.webp" alt=""><span class="rec">● REC</span><div class="tvs">${DV()?`<video id="v" src="${DV()}" controls playsinline preload="metadata"></video>`:'<div class="none">O depoimento será exibido aqui.</div>'}</div></div><p style="max-width:520px">Durante toda esta investigação, você analisou pistas, resolveu charadas e descobriu o que realmente importa...</p><div><button class="btn" id="go">${DV()?'▶ Assistir Depoimento':'Continuar'}</button> ${DV()?'<button class="btn dim" id="sk">Seguir para o álbum</button>':''}</div>${BK()}`,
 10:()=>{AL=[...L.professores.map(p=>({foto:p.foto,t:p.nome})),...L.albumExtra.map(a=>({foto:a.foto,t:a.legenda||''}))];return`<div class="album">${AL.map((a,i)=>`<button class="pol" data-p="${i}">${ph(a.foto,a.t)}<br>${a.t}</button>`).join('')}</div><div class="paper tilt rgb" style="max-width:340px"><h2 style="font-size:1.8rem">Caso encerrado.</h2><p>Memórias preservadas. ♡</p></div><div class="regs">${[['w','Todas as Palavras'],['c','O Caderno'],['l','A Carta'],['v','O Vídeo']].map(([k,t])=>`<button class="btn" data-r="${k}">${t}</button>`).join('')}</div>`},
-11:()=>`<div class="paper tilt" style="padding:34px">${L.final.map((t,i)=>`<p class="fadeline" style="animation-delay:${1.5+i*1.6}s">${t}</p>`).join('')}<p class="fadeline" style="animation-delay:${2+L.final.length*1.6}s;text-align:right;font-style:italic">${L.assinaturaFinal}</p><i class="wax"></i></div><button class="btn fadeline dim" id="re" style="animation-delay:${16+L.final.length}s">Reabrir investigação</button>${BK()}`};
+11:()=>`<div class="paper tilt" style="padding:34px;min-height:320px;max-width:520px"><small>Para: ${L.professores[S.prof].nome}</small><div id="cx"><p style="opacity:.6;font-style:italic;text-align:center;margin-top:70px">A carta está vazia.<br>Toque no botão para receber uma mensagem.</p></div><i class="wax"></i></div><div style="margin-top:26px"><button class="btn" id="nc">✉ Gerar carta</button> <button class="btn dim" id="bk">← Voltar ao álbum</button></div>`};
 const I={
 1:()=>pickInit(),
 2:()=>$$('[data-o]').forEach(b=>b.onclick=()=>{const o=b.dataset.o;if(o=='c')go(3);else if(o=='e'){S.max>=4?go(4):($('#m').textContent='Esta evidência ainda não foi encontrada. Comece pela correspondência.')}else if(o=='d')modal(caderno());else modal(`<div class="paper"><small>Arquivo</small><h2>Registros da investigação</h2><p>Correspondências lidas: ${S.read?1:0}</p><p>Evidências: ${S.num?1:0}</p><p>Fichas abertas: ${S.seen.length}/1</p>${CL}</div>`)}),
@@ -126,7 +144,16 @@ const I={
 9:()=>{bkInit();const v=$('#v'),b=$('#go');if(!v){b.onclick=()=>go(10);return}b.onclick=()=>{v.play();b.hidden=true};v.onplay=()=>b.hidden=true;v.onended=()=>go(10);v.onerror=()=>{$('.rec').textContent='● vídeo indisponível';b.hidden=true};$('#sk').onclick=()=>go(10)},
 10:()=>{$$('[data-p]').forEach(b=>b.onclick=()=>{const a=AL[+b.dataset.p];modal(`<div class="paper" style="max-width:380px"><div class="photo big" style="border-width:8px 8px 22px">${ph(a.foto,a.t)}</div><p>${a.t}</p>${CL}</div>`)});
  $$('[data-r]').forEach(b=>b.onclick=()=>{const r=b.dataset.r;if(r=='l'){S.bk=true;go(11)}else if(r=='v'){S.bk=true;go(9)}else if(r=='c')modal(caderno());else if(r=='w')modal(`<div class="paper"><small>Todas as Palavras</small>${(L.palavras||[]).map(w=>`<p><b>${w}</b></p>`).join('')}${CL}</div>`);else modal(`<div class="paper"><div class="album">${AL.map(a=>`<div class="pol">${ph(a.foto,a.t)}<br>${a.t}</div>`).join('')}</div>${CL}</div>`)})},
-11:()=>{bkInit();$('#re').onclick=()=>{S=Object.assign({},DEF,{ded:[],seen:[],prof:S.prof});save();go(1)}}};
+11:()=>{$('#bk').onclick=()=>go(10);
+ // Gerador de cartas: cada clique monta uma carta nova (abertura + meio + fecho) que ainda não foi exibida; as combinações usadas ficam em S.cu.
+ const C=L.cartas,A=C.aberturas,M=C.meios,F=C.fechos,tot=A.length*M.length*F.length;let prev=null;
+ const pick=()=>{if(!Array.isArray(S.cu)||S.cu.length>=tot)S.cu=[];let k,t=0;
+  do{const a=Math.floor(Math.random()*A.length),m=Math.floor(Math.random()*M.length),f=Math.floor(Math.random()*F.length);k=[a,m,f];t++}
+  while((S.cu.includes(k.join('-'))||(prev&&t<60&&(prev[0]==k[0]||prev[1]==k[1]||prev[2]==k[2])))&&t<400);
+  S.cu.push(k.join('-'));prev=k;save();return k};
+ $('#nc').onclick=()=>{const [a,m,f]=pick(),ls=[A[a],M[m],F[f]];
+  $('#cx').innerHTML=ls.map((t,i)=>`<p class="fadeline" style="animation-delay:${.3+i*1.3}s">${t}</p>`).join('')+`<p class="fadeline" style="animation-delay:${.3+ls.length*1.3}s;text-align:right;font-style:italic">${L.assinaturaFinal}</p>`;
+  $('#nc').textContent='✉ Gerar nova carta';if(typeof som=='function')som(false)}}};
 function show(){if(S.step>1&&S.prof==null)S.step=1;const n=S.step;$('#stage').innerHTML=`<section class="scr s${n}">${T[n]()}</section>`;hud();I[n]()}
 addEventListener('keydown',e=>e.key=='Escape'&&closeM());
 // Luz da lanterna: um brilho dourado suave segue o mouse (só em telas com mouse; desliga com "reduzir movimento").
@@ -136,4 +163,4 @@ if(matchMedia('(hover:hover)').matches&&!matchMedia('(prefers-reduced-motion:red
 
 addEventListener('hashchange',()=>{if(location.hash=='#liberar'){libera();show()}});
 if(location.hash=='#liberar')libera();
-show();
+show();if(S.step>1)intro(S.step,false);
