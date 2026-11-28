@@ -28,3 +28,8 @@ Fotos em `assets/fotos/`. Pendentes: vídeo do depoimento (`assets/depoimento.mp
 - As imagens ficam em `assets/sombra-mulher.jpg` (Cássia e Vanessa) e `assets/sombra-homem.jpg` (Julio e José), definidas no campo `sombra` de cada professor em `js/data.js`. Aparecem como foto dos perfis na capa, no quadro e nas fichas até a revelação final.
 - Opcional: uma sombra diferente por professor — adicione `sombra: "assets/sombra-julio.png"` dentro do professor.
 - Sem o arquivo, o site mostra a inicial do nome (capa) e um busto genérico (quadro/fichas).
+
+## Vídeos separados por professor
+- `video` (dentro de cada professor): aparece ao terminar o interrogatório dele.
+- `depoimento` (dentro de cada professor): é o vídeo da tela do informante, diferente para cada um. Ex.: `"assets/depoimento-julio.mp4"`.
+- `video` no fim do `data.js`: reserva, usado só se o professor não tiver `depoimento`.
