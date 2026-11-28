@@ -32,8 +32,8 @@ window.LF = {
       pista: "Anotação do caso: toda pergunta esconde um segredo na primeira letra. Junte todas e o código da surpresa final se revela. Erre à vontade: são 3 dicas por pergunta. E atenção, haverá uma sobre a sua área, porque o informante também gosta de testar o detetive.",
       // ▶ VÍDEO DA PROFESSORA CÁSSIA (ainda será gravado): coloque o arquivo em assets/ e escreva o caminho aqui. Ex.: "assets/video-cassia.mp4"
       video: "",
-      // ▶ VÍDEO DO DEPOIMENTO FINAL DA PROFESSORA CÁSSIA (tela do informante) — ainda será gravado. Ex.: "assets/depoimento-cassia.mp4"
-      depoimento: "",
+      // ▶ VÍDEO DO DEPOIMENTO FINAL DA PROFESSORA CÁSSIA (tela do informante) — o arquivo precisa se chamar exatamente: "assets/depoimento-cassia.mp4"
+      depoimento: "assets/depoimento-cassia.mp4",
       perguntas: [
         { // PESSOAL — não substituir nem alterar a resposta
           texto: "Referente ao buquê de flores da homenagem, qual artista renomado inspirou a escolha?",
@@ -70,8 +70,8 @@ window.LF = {
       pista: "Anotação do caso: toda pergunta esconde um segredo na primeira letra. Junte todas e o código da surpresa final se revela. Erre à vontade: são 3 dicas por pergunta. E atenção, haverá uma sobre a sua área, porque o informante também gosta de testar o detetive.",
       // ▶ VÍDEO DO PROFESSOR JULIO (ainda será gravado): coloque o arquivo em assets/ e escreva o caminho aqui. Ex.: "assets/video-julio.mp4"
       video: "",
-      // ▶ VÍDEO DO DEPOIMENTO FINAL DO PROFESSOR JULIO (tela do informante) — ainda será gravado. Ex.: "assets/depoimento-julio.mp4"
-      depoimento: "",
+      // ▶ VÍDEO DO DEPOIMENTO FINAL DO PROFESSOR JULIO (tela do informante) — o arquivo precisa se chamar exatamente: "assets/depoimento-julio.mp4"
+      depoimento: "assets/depoimento-julio.mp4",
       perguntas: [
         { // Monitor
           texto: "Responsável por transformar informações digitais em imagens na tela, qual dispositivo é utilizado para a saída visual do computador?",
@@ -108,8 +108,8 @@ window.LF = {
       pista: "Anotação do caso: toda pergunta esconde um segredo na primeira letra. Junte todas e o código da surpresa final se revela. Erre à vontade: são 3 dicas por pergunta. E atenção, haverá uma sobre a sua área, porque o informante também gosta de testar o detetive.",
       // ▶ VÍDEO DA PROFESSORA VANESSA (ainda será gravado): coloque o arquivo em assets/ e escreva o caminho aqui. Ex.: "assets/video-vanessa.mp4"
       video: "",
-      // ▶ VÍDEO DO DEPOIMENTO FINAL DA PROFESSORA VANESSA (tela do informante) — ainda será gravado. Ex.: "assets/depoimento-vanessa.mp4"
-      depoimento: "",
+      // ▶ VÍDEO DO DEPOIMENTO FINAL DA PROFESSORA VANESSA (tela do informante) — o arquivo precisa se chamar exatamente: "assets/depoimento-vanessa.mp4"
+      depoimento: "assets/depoimento-vanessa.mp4",
       perguntas: [
         { // Ransomware
           texto: "Responsável por sequestrar dados ou bloquear o acesso a arquivos, exigindo um pagamento para liberá-los, que tipo de ameaça digital é essa?",
@@ -146,8 +146,8 @@ window.LF = {
       pista: "Anotação do caso: toda pergunta esconde um segredo na primeira letra. Junte todas e o código da surpresa final se revela. Erre à vontade: são 3 dicas por pergunta. E atenção, haverá uma sobre a sua área, porque o informante também gosta de testar o detetive.",
       // ▶ VÍDEO DO PROFESSOR JOSÉ (ainda será gravado): coloque o arquivo em assets/ e escreva o caminho aqui. Ex.: "assets/video-jose.mp4"
       video: "",
-      // ▶ VÍDEO DO DEPOIMENTO FINAL DO PROFESSOR JOSÉ (tela do informante) — ainda será gravado. Ex.: "assets/depoimento-jose.mp4"
-      depoimento: "",
+      // ▶ VÍDEO DO DEPOIMENTO FINAL DO PROFESSOR JOSÉ (tela do informante) — o arquivo precisa se chamar exatamente: "assets/depoimento-jose.mp4"
+      depoimento: "assets/depoimento-jose.mp4",
       perguntas: [
         { // ERP
           texto: "Responsável por centralizar e integrar informações de diferentes setores de uma empresa, qual tipo de sistema de gestão empresarial é conhecido pela sigla ERP?",
@@ -176,7 +176,7 @@ window.LF = {
       ] }
   ],
   frase: "Ensinar é deixar uma parte de si no outro.",
-  // ▶ VÍDEO GERAL DO DEPOIMENTO (reserva): só é usado para o professor que NÃO tiver o campo "depoimento" preenchido.
+  // ▶ VÍDEO GERAL DO DEPOIMENTO (reserva): NÃO é mais usado: cada professor só vê o vídeo do próprio perfil (campo "depoimento").
   //   Cada professor tem o seu depoimento no campo "depoimento" dentro do próprio professor (acima).
   //   Enquanto estiver tudo vazio, a TV mostra "O depoimento será exibido aqui."
   video: "",
@@ -195,7 +195,7 @@ window.LF = {
     6: {titulo: "O quadro de investigação", texto: "Toque na sua fotografia para abrir a sua ficha de investigador. Leia tudo com calma e depois feche a ficha para seguir a pista."},
     7: {titulo: "A frase misteriosa", texto: "Reorganize as palavras, arrastando ou tocando nelas, até formar a frase correta. Se precisar, use o botão Dica."},
     8: {titulo: "O informante", texto: "O responsável foi identificado. Agora você precisa descobrir quem é o informante. Para isso, será preciso um código secreto formado pelas iniciais das perguntas. O Caderno de Dedução pode ajudar."},
-    9: {titulo: "O depoimento", texto: "Chegou a hora do depoimento. Ele foi gravado especialmente para você. Aperte o play e assista até o final."},
+    9: {titulo: "O depoimento", texto: "Chegou a hora do depoimento. Ele foi gravado especialmente para você. Quando estiver pronto, toque em Eternizar e assista ao vídeo até o final."},
     10: {titulo: "Caso encerrado", texto: "Investigação concluída! Aqui ficam todas as memórias guardadas. Toque nas fotos para ampliar e use os botões abaixo para rever palavras, caderno, vídeo e a carta."},
     11: {titulo: "A carta", texto: "A carta está vazia. Toque em Gerar carta e uma mensagem nova aparece, e cada clique traz uma diferente. Use quantas vezes quiser."}
   },
