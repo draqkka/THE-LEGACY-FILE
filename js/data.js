@@ -32,6 +32,8 @@ window.LF = {
       pista: "Anotação do caso: toda pergunta esconde um segredo na primeira letra. Junte todas e o código da surpresa final se revela. Erre à vontade: são 3 dicas por pergunta. E atenção, haverá uma sobre a sua área, porque o informante também gosta de testar o detetive.",
       // ▶ VÍDEO DA PROFESSORA CÁSSIA (ainda será gravado): coloque o arquivo em assets/ e escreva o caminho aqui. Ex.: "assets/video-cassia.mp4"
       video: "",
+      // ▶ VÍDEO DO DEPOIMENTO FINAL DA PROFESSORA CÁSSIA (tela do informante) — ainda será gravado. Ex.: "assets/depoimento-cassia.mp4"
+      depoimento: "",
       perguntas: [
         { // PESSOAL — não substituir nem alterar a resposta
           texto: "Referente ao buquê de flores da homenagem, qual artista renomado inspirou a escolha?",
@@ -68,6 +70,8 @@ window.LF = {
       pista: "Anotação do caso: toda pergunta esconde um segredo na primeira letra. Junte todas e o código da surpresa final se revela. Erre à vontade: são 3 dicas por pergunta. E atenção, haverá uma sobre a sua área, porque o informante também gosta de testar o detetive.",
       // ▶ VÍDEO DO PROFESSOR JULIO (ainda será gravado): coloque o arquivo em assets/ e escreva o caminho aqui. Ex.: "assets/video-julio.mp4"
       video: "",
+      // ▶ VÍDEO DO DEPOIMENTO FINAL DO PROFESSOR JULIO (tela do informante) — ainda será gravado. Ex.: "assets/depoimento-julio.mp4"
+      depoimento: "",
       perguntas: [
         { // Monitor
           texto: "Responsável por transformar informações digitais em imagens na tela, qual dispositivo é utilizado para a saída visual do computador?",
@@ -104,6 +108,8 @@ window.LF = {
       pista: "Anotação do caso: toda pergunta esconde um segredo na primeira letra. Junte todas e o código da surpresa final se revela. Erre à vontade: são 3 dicas por pergunta. E atenção, haverá uma sobre a sua área, porque o informante também gosta de testar o detetive.",
       // ▶ VÍDEO DA PROFESSORA VANESSA (ainda será gravado): coloque o arquivo em assets/ e escreva o caminho aqui. Ex.: "assets/video-vanessa.mp4"
       video: "",
+      // ▶ VÍDEO DO DEPOIMENTO FINAL DA PROFESSORA VANESSA (tela do informante) — ainda será gravado. Ex.: "assets/depoimento-vanessa.mp4"
+      depoimento: "",
       perguntas: [
         { // Ransomware
           texto: "Responsável por sequestrar dados ou bloquear o acesso a arquivos, exigindo um pagamento para liberá-los, que tipo de ameaça digital é essa?",
@@ -140,6 +146,8 @@ window.LF = {
       pista: "Anotação do caso: toda pergunta esconde um segredo na primeira letra. Junte todas e o código da surpresa final se revela. Erre à vontade: são 3 dicas por pergunta. E atenção, haverá uma sobre a sua área, porque o informante também gosta de testar o detetive.",
       // ▶ VÍDEO DO PROFESSOR JOSÉ (ainda será gravado): coloque o arquivo em assets/ e escreva o caminho aqui. Ex.: "assets/video-jose.mp4"
       video: "",
+      // ▶ VÍDEO DO DEPOIMENTO FINAL DO PROFESSOR JOSÉ (tela do informante) — ainda será gravado. Ex.: "assets/depoimento-jose.mp4"
+      depoimento: "",
       perguntas: [
         { // ERP
           texto: "Responsável por centralizar e integrar informações de diferentes setores de uma empresa, qual tipo de sistema de gestão empresarial é conhecido pela sigla ERP?",
@@ -168,9 +176,9 @@ window.LF = {
       ] }
   ],
   frase: "Ensinar é deixar uma parte de si no outro.",
-  // ▶ VÍDEO DO DEPOIMENTO FINAL (tela 9, "o informante") — ainda será gravado.
-  //   Quando estiver pronto: coloque o arquivo em assets/ e escreva o caminho aqui. Ex.: "assets/depoimento.mp4"
-  //   Enquanto estiver vazio, a TV mostra "O depoimento será exibido aqui."
+  // ▶ VÍDEO GERAL DO DEPOIMENTO (reserva): só é usado para o professor que NÃO tiver o campo "depoimento" preenchido.
+  //   Cada professor tem o seu depoimento no campo "depoimento" dentro do próprio professor (acima).
+  //   Enquanto estiver tudo vazio, a TV mostra "O depoimento será exibido aqui."
   video: "",
   albumExtra: [],                                // fotos extras: [{foto:"assets/f1.jpg", legenda:""}]
   final: ["Existem pessoas que passam por nossas vidas sem deixar registros oficiais.",
