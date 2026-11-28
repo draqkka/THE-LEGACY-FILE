@@ -167,3 +167,35 @@ input:focus{outline:0;border-color:#e8c36a;box-shadow:0 0 0 3px #e8c36a33,0 0 22
  .regs .btn:hover{background:#c0a16a33}
 }
 @media(prefers-reduced-motion:reduce){.rgb::before,.rgb::after{animation:none}.rgb:hover{animation:none}}
+
+/* ===== Progresso estilo jogo (bolinhas numeradas) ===== */
+.dots button{width:26px;height:26px;font:700 11px var(--sans);letter-spacing:0;color:#c0a16a99;border:1px solid #c0a16a55;background:#0007;display:grid;place-items:center;line-height:1}
+.dots button.on{color:#2a1b0c;border-color:#f3d58b;background:radial-gradient(circle at 35% 30%,#f8e3a6,#c0a16a 70%);box-shadow:0 0 7px #e8c36a88;cursor:pointer}
+.dots button.now{animation:pulsoEtapa 2s ease-in-out infinite;transform:scale(1.18)}
+.dots button.blink{animation:piscaEtapa .55s ease-in-out 6}
+@keyframes pulsoEtapa{50%{box-shadow:0 0 0 5px #e8c36a22,0 0 16px #ffd98a}}
+@keyframes piscaEtapa{0%,100%{transform:scale(1);box-shadow:0 0 7px #e8c36a88}50%{transform:scale(1.65);background:radial-gradient(circle at 35% 30%,#fff7d6,#ffd25a 70%);box-shadow:0 0 0 6px #ffd25a44,0 0 26px #ffe08a}}
+.mi{width:24px;height:24px;margin-left:8px;border-radius:50%;border:1px solid var(--l);background:none;color:var(--l);font:700 13px var(--serif);cursor:pointer;padding:0;transition:background .3s,color .3s}
+.mi:hover{background:var(--l);color:#2a1b0c}
+@media(max-width:520px){.dots{gap:2px}.dots button{width:20px;height:20px;font-size:9px}#hud .dt{display:none}.mi{margin-left:0}}
+/* ===== Popup de missão (digitação) ===== */
+.mis{max-width:460px;padding-right:46px}
+.mis .x{position:absolute;top:8px;right:10px;width:34px;height:34px;border-radius:50%;border:1px solid var(--b);background:none;color:var(--b);font-size:1.15rem;cursor:pointer;line-height:1;padding:0;transition:background .3s,color .3s}
+.mis .x:hover{background:var(--b);color:#efe5d0}
+.mis .x.rdy{animation:pulsoX 1.6s ease-in-out infinite}
+@keyframes pulsoX{50%{box-shadow:0 0 0 6px #762b3c33}}
+.mis .ok-et{margin:0 0 6px;font:700 12px var(--sans);letter-spacing:.14em;text-transform:uppercase;color:#2f7a4d}
+.mis .dica-x{font-size:.95rem;font-style:italic;opacity:.65;animation:fin 1s forwards}
+.cur{display:inline-block;width:2px;height:1.1em;background:var(--b);margin-left:2px;vertical-align:-.15em;animation:bl 1s steps(1) infinite}
+@keyframes bl{50%{opacity:0}}
+/* ===== Sombra misteriosa piscando atrás da caixa da missão ===== */
+.mis{animation:sombraMist 4.2s ease-in-out infinite}
+@keyframes sombraMist{
+0%,100%{box-shadow:0 0 50px 12px #000000cc,0 0 110px 40px #762b3c66,0 18px 40px #000b,inset 0 0 40px #8a6a3a55}
+12%{box-shadow:0 0 30px 4px #000000aa,0 0 70px 14px #762b3c22,0 18px 40px #000b,inset 0 0 40px #8a6a3a55}
+20%{box-shadow:0 0 60px 16px #000000dd,0 0 130px 52px #762b3c88,0 18px 40px #000b,inset 0 0 40px #8a6a3a55}
+38%{box-shadow:0 0 40px 8px #000000bb,0 0 90px 24px #762b3c44,0 18px 40px #000b,inset 0 0 40px #8a6a3a55}
+52%{box-shadow:0 0 28px 2px #000000aa,0 0 60px 10px #c0a16a22,0 18px 40px #000b,inset 0 0 40px #8a6a3a55}
+64%{box-shadow:0 0 64px 18px #000000dd,0 0 140px 56px #762b3c99,0 18px 40px #000b,inset 0 0 40px #8a6a3a55}
+82%{box-shadow:0 0 44px 10px #000000bb,0 0 100px 30px #762b3c55,0 18px 40px #000b,inset 0 0 40px #8a6a3a55}}
+@media(prefers-reduced-motion:reduce){.mis{animation:none;box-shadow:0 0 60px 14px #000c,0 0 110px 36px #762b3c55,0 18px 40px #000b,inset 0 0 40px #8a6a3a55}}
