@@ -64,7 +64,7 @@ const T={
 8:()=>`<div><div class="sil"></div></div><div><h2 class="fadeline" style="animation-delay:1s">O responsável foi identificado.</h2><p class="fadeline" style="animation-delay:2.5s">As evidências apontam para alguém que esteve presente em todos os registros, mas nunca apareceu como suspeito.</p><p class="fadeline" style="animation-delay:4s">A identidade será revelada após a última dedução.</p><button class="btn fadeline" style="animation-delay:5.5s" id="go">Identificar o informante</button><div id="sp" hidden></div></div>`,
 // ▶ VÍDEO DO DEPOIMENTO FINAL (informante): cada professor tem o seu, no campo "depoimento" dentro do professor em data.js. Se faltar, usa o campo "video" geral no fim do arquivo. Vazio = a TV mostra "O depoimento será exibido aqui."
 9:()=>`<div class="tv"><img class="tvf" src="assets/tv-retro.webp" alt=""><span class="rec">● REC</span><div class="tvs">${DV()?`<video id="v" src="${DV()}" controls playsinline preload="metadata"></video>`:'<div class="none">O depoimento será exibido aqui.</div>'}</div></div><p style="max-width:520px">Durante toda esta investigação, você analisou pistas, resolveu charadas e descobriu o que realmente importa...</p><div><button class="btn" id="go">${DV()?'▶ Assistir Depoimento':'Continuar'}</button> ${DV()?'<button class="btn dim" id="sk">Seguir para o álbum</button>':''}</div>`,
-10:()=>{AL=[...L.professores.map(p=>({foto:p.foto,t:p.nome})),...L.albumExtra.map(a=>({foto:a.foto,t:a.legenda||''}))];return`<div class="album">${AL.map((a,i)=>`<button class="pol" data-p="${i}">${ph(a.foto,a.t)}<br>${a.t}</button>`).join('')}</div><div class="paper tilt" style="max-width:340px"><h2 style="font-size:1.8rem">Caso encerrado.</h2><p>Memórias preservadas. ♡</p></div><div class="regs">${[['w','Todas as Palavras'],['c','O Caderno'],['l','A Carta'],['v','O Vídeo']].map(([k,t])=>`<button class="btn" data-r="${k}">${t}</button>`).join('')}</div>`},
+10:()=>{AL=[...L.professores.map(p=>({foto:p.foto,t:p.nome})),...L.albumExtra.map(a=>({foto:a.foto,t:a.legenda||''}))];return`<div class="album">${AL.map((a,i)=>`<button class="pol" data-p="${i}">${ph(a.foto,a.t)}<br>${a.t}</button>`).join('')}</div><div class="paper tilt rgb" style="max-width:340px"><h2 style="font-size:1.8rem">Caso encerrado.</h2><p>Memórias preservadas. ♡</p></div><div class="regs">${[['w','Todas as Palavras'],['c','O Caderno'],['l','A Carta'],['v','O Vídeo']].map(([k,t])=>`<button class="btn" data-r="${k}">${t}</button>`).join('')}</div>`},
 11:()=>`<div class="paper tilt" style="padding:34px">${L.final.map((t,i)=>`<p class="fadeline" style="animation-delay:${1.5+i*1.6}s">${t}</p>`).join('')}<p class="fadeline" style="animation-delay:${2+L.final.length*1.6}s;text-align:right;font-style:italic">${L.assinaturaFinal}</p><i class="wax"></i></div><button class="btn fadeline dim" id="re" style="animation-delay:${16+L.final.length}s">Reabrir investigação</button>`};
 const I={
 1:()=>pickInit(),
@@ -127,6 +127,11 @@ const I={
 11:()=>$('#re').onclick=()=>{S=Object.assign({},DEF,{ded:[],seen:[],prof:S.prof});save();go(1)}};
 function show(){if(S.step>1&&S.prof==null)S.step=1;const n=S.step;$('#stage').innerHTML=`<section class="scr s${n}">${T[n]()}</section>`;hud();I[n]()}
 addEventListener('keydown',e=>e.key=='Escape'&&closeM());
+// Luz da lanterna: um brilho dourado suave segue o mouse (só em telas com mouse; desliga com "reduzir movimento").
+if(matchMedia('(hover:hover)').matches&&!matchMedia('(prefers-reduced-motion:reduce)').matches){const l=document.createElement('div');l.id='luz';l.setAttribute('aria-hidden','true');document.body.appendChild(l);let raf;
+ addEventListener('pointermove',e=>{if(e.pointerType=='touch')return;cancelAnimationFrame(raf);raf=requestAnimationFrame(()=>{l.style.setProperty('--x',e.clientX+'px');l.style.setProperty('--y',e.clientY+'px');l.style.opacity=1})});
+ document.documentElement.addEventListener('mouseleave',()=>l.style.opacity=0)}
+
 addEventListener('hashchange',()=>{if(location.hash=='#liberar'){libera();show()}});
 if(location.hash=='#liberar')libera();
 show();
