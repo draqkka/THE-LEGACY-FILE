@@ -127,3 +127,43 @@ input{font:16px var(--ed);padding:12px;background:#0007;border:1px solid #c0a16a
 .pol:hover img,.pol:focus-visible img{transform:scale(1.07)}
 @media(hover:hover){.album:hover .pol:not(:hover){filter:brightness(.62) saturate(.85)}}
 @media(prefers-reduced-motion:reduce){.pol,.pol img{transition:none}}
+
+/* ===== feixes de RGB (cartão "Caso encerrado") ===== */
+@property --a{syntax:'<angle>';initial-value:0deg;inherits:false}
+.rgb{transition:transform .5s cubic-bezier(.34,1.56,.64,1),box-shadow .4s ease}
+.rgb::before{content:"";position:absolute;inset:-3px;padding:3px;background:conic-gradient(from var(--a),#ff0040,#ffe600,#00ff95,#00b7ff,#8a2be2,#ff0040);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0);opacity:0;transition:opacity .35s;pointer-events:none;animation:giraRgb 2.4s linear infinite}
+.rgb::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .35s;background:linear-gradient(110deg,transparent 0 30%,rgba(255,0,90,.38) 36%,rgba(255,230,0,.3) 42%,rgba(0,255,150,.38) 48%,rgba(0,170,255,.38) 54%,rgba(150,60,255,.34) 60%,transparent 66% 100%);background-size:260% 100%;background-position:130% 0;animation:feixoRgb 1.8s ease-in-out infinite}
+.rgb:hover,.rgb:active,.rgb:focus-within{transform:rotate(0deg) scale(1.07);animation:brilhoRgb 3s linear infinite}
+.rgb:hover::before,.rgb:active::before,.rgb:focus-within::before,.rgb:hover::after,.rgb:active::after,.rgb:focus-within::after{opacity:1}
+@keyframes giraRgb{to{--a:360deg}}
+@keyframes feixoRgb{from{background-position:130% 0}to{background-position:-30% 0}}
+@keyframes brilhoRgb{0%,100%{box-shadow:0 0 30px 6px #ff0040aa,0 18px 40px #000b}33%{box-shadow:0 0 30px 6px #00ff95aa,0 18px 40px #000b}66%{box-shadow:0 0 30px 6px #00b7ffaa,0 18px 40px #000b}}
+
+/* ===== mais interação em todo o site ===== */
+input:focus{outline:0;border-color:#e8c36a;box-shadow:0 0 0 3px #e8c36a33,0 0 22px #e8c36a55}
+.paper.tilt,.stamp,.gears b,.obj img,.dots button,.seal,.tile,.zone,.dos .photo,.dos dd{transition:transform .4s cubic-bezier(.34,1.56,.64,1),box-shadow .35s ease,border-color .3s,background .3s,text-shadow .3s}
+.btn{position:relative;overflow:hidden}
+.btn::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(232,195,106,.38) 50%,transparent 70%);transform:translateX(-130%);pointer-events:none}
+#luz{position:fixed;inset:0;pointer-events:none;z-index:61;opacity:0;transition:opacity .4s;background:radial-gradient(circle 230px at var(--x,50%) var(--y,50%),rgba(255,214,130,.14),transparent 70%)}
+.btn:active,.obj:active,.card:active,.pk:active{transform:scale(.95)}
+@media(hover:hover){
+ .paper.tilt:not(.rgb):hover{transform:rotate(0deg) translateY(-4px);box-shadow:0 26px 48px #000c,inset 0 0 40px #8a6a3a55}
+ .btn:hover{background:#c0a16a22;box-shadow:0 0 22px #e8c36a66;transform:translateY(-3px)}
+ .btn:hover::after{transform:translateX(130%);transition:transform .8s ease}
+ .obj:hover{border-color:#e8c36a;background:#e8c36a14;box-shadow:0 10px 26px #e8c36a55;transform:translateY(-6px)}
+ .obj:hover img{transform:scale(1.15) rotate(-5deg)}
+ .card:not(.lock):hover{z-index:3;transform:translateY(-8px) rotate(0deg) scale(1.07);box-shadow:0 0 0 2px #e8c36acc,0 0 26px 6px #e8c36a88,0 18px 30px #000c}
+ .pk:not(.lock):hover{box-shadow:0 0 0 2px #e8c36a,0 0 26px 6px #e8c36a77,0 14px 24px #000c}
+ .gears b:hover{transform:translateY(-4px) scale(1.12);box-shadow:0 0 26px #e8c36a99,0 0 0 1px #e8c36a;color:#f6d98a}
+ .stamp:hover{transform:rotate(-4deg) scale(1.1);box-shadow:0 0 26px #b0405888}
+ .dots button.on:hover{transform:scale(1.5);box-shadow:0 0 10px var(--b)}
+ #hud span:hover{border-color:#e8c36a;color:#f6d98a}
+ .seal:hover{border-color:#e8c36a;box-shadow:0 0 18px #e8c36a55}
+ .s1 h1{transition:text-shadow .4s}.s1 h1:hover{text-shadow:0 0 30px #e8c36a99,0 0 60px #e8c36a55}
+ .tile:not(.drag):hover{transform:translateY(-4px) rotate(-2deg);box-shadow:0 10px 14px #000b}
+ .zone:hover{border-color:#e8c36a;background:#e8c36a14}
+ .dos .photo:hover{transform:rotate(-1.5deg) scale(1.04)}
+ .dos dd:hover{background:#c0a16a22}
+ .regs .btn:hover{background:#c0a16a33}
+}
+@media(prefers-reduced-motion:reduce){.rgb::before,.rgb::after{animation:none}.rgb:hover{animation:none}}
